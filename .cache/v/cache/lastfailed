@@ -1,0 +1,3 @@
+{
+  "strcalculator_test.py::TestStrCalculator::test_negative_numbers_raise_error": true
+}
