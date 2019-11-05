@@ -28,6 +28,12 @@ class TestStrCalculator(unittest.TestCase):
         self.assertEqual(StrCalculator('//a20560bc\n1abc2abc3').add, 6)
 
     def test_negative_numbers_raise_error(self):
-        self.assertRaises(ValueError, StrCalculator, '3, 4, -1')
+        with self.assertRaises(ValueError):
+            StrCalculator('3, 4, -1').add
 
+        with self.assertRaises(ValueError):
+            StrCalculator('-1, 4, -1').add
 
+    def test_ignore_big_numbers(self):
+        self.assertEqual(StrCalculator('1000, 1003, 3, 1').add, 4)
+        self.assertEqual(StrCalculator('1001, 2').add, 2)
